@@ -1,5 +1,3 @@
-# Smokers_Data_Analysis_with_R
-
 # Data analysis – Smokers dataset
 
 The goal of this work is to find interesting data/patterns from a raw dataset (Dataset.csv). The excel file given are the response of 258 persons to 24 questions. Some question have simple answers, some contains a list of answers. The data are not normalized, so the first step of our study is to filter the data
