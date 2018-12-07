@@ -115,7 +115,7 @@ Some statistics:
 
   - Std
 
-<img src="./Files/Images/stdAge.png" alt="test" height="80" width="50">
+<img src="./Files/Images/stdAge.png" alt="test" height="80" width="80">
 
 - Weight
   - A big part of the set is between 60 and 90 kg
@@ -137,7 +137,7 @@ Some statistics:
 
   - Std
 
-<img src="./Files/Images/stdHeight.png" alt="test" height="80" width="50">
+<img src="./Files/Images/stdHeight.png" alt="test" height="80" width="80">
 
 - BMI
   - BMI for most between 25 and 35
@@ -147,7 +147,7 @@ Some statistics:
 <img src="./Files/Images/repBmi.png" alt="test" height="80" width="300">
 
   - Std
-<img src="./Files/Images/stdBmi.png" alt="test" height="80" width="50">
+<img src="./Files/Images/stdBmi.png" alt="test" height="80" width="80">
 
 Some link between data:
 
@@ -201,7 +201,7 @@ We also tried other method:
 
 - Clustering with medoids (here for BMI)
 
-<img src="./Files/Images/kmdeoids.png" alt="test" height="500" width="500">
+<img src="./Files/Images/kmdeoid.png" alt="test" height="500" width="500">
 
 - Clustering with KMean :
 
@@ -399,6 +399,69 @@ After those mode come the mode 4 (On time)
 
 It is interesting to note that omitting the observation week, the next more used mode is the 5 (Skipped). It denotes a real motivation to reduce (or the incapacity to smoke at that moment)
 
+## Construction of the shiny application
+
+
+The goal here is to create a visualization tool through shiny to display the results.
+
+Our choices
+
+- We wanted our application to show some different features and wanted to learn and try the most about shiny, that&#39;s why **we decided to try multiple display format and organization** instead of just showing an exhaustive list of all the result.
+- We also wanted our application to be **oriented for technical people** so we gave access to some of the dataset (with the ability to filter them)
+- We of course **maintained the structure we created the week before:** every stats are there calculated in one step, after you upload your file. That&#39;s why after selecting the file you need to wait until everything is calculated (showed by a change in the top message)
+  - Doing this ensure that **after the initial wait, the navigation is then fluid** , since everything is provided for the different mechanism implemented
+- We decided to limit the choice for the upload and only display the head(because displaying all the set takes too much space and make the application crash)
+
+# Our Implementation
+
+- We have 3 tabs:
+
+<img src="./Files/Images/tabs.png" alt="test" height="100" width="400">
+
+  - Import file (allows you to import your CSV)
+  - All User which contains:
+    - The cigarette smoked by the users (graphical)
+    - The consumption of the last 7 days (graphical)
+    - The smoking repartition (dataset &amp; graphical)
+    - Lighter mode usage(dataset &amp; graphical)
+  - Individual user contains 2 tab:
+    - **General stat** , Using the **user**** selector** you can graphically see the number of cigarette smoked:
+      - **Per Day**
+      - **Per Mode**
+      - **Per Interval**
+    - Precise Stat, using the **selectors** you can choose the **User, Week Day, Mode, Interval**
+
+# Visualisation
+
+- **Import file** (when a file has been imported)
+
+<img src="./Files/Images/import.png" alt="test" height="500" width="800">
+
+- **All user**
+
+<img src="./Files/Images/allUGraph.png" alt="test" height="500" width="500">
+<img src="./Files/Images/allUGraph2.png" alt="test" height="350" width="800">
+<img src="./Files/Images/allUGraph3.png" alt="test" height="350" width="800">
+
+
+**Individual User**
+
+<img src="./Files/Images/indivU.png" alt="test" height="300" width="400">
+<img src="./Files/Images/indivU2.png" alt="test" height="300" width="400">
+<img src="./Files/Images/indivU3.png" alt="test" height="300" width="400">
+
+- Precise Stat
+
+<img src="./Files/Images/preciseStat.png" alt="test" height="400" width="500">
+<img src="./Files/Images/preciseStat2.png" alt="test" height="400" width="500">
+
+## Known bug that would need to be corrected if it was for a real client:
+
+- Sometimes when you upload your file an error occurs &quot;Warning: Error in preprocessData: could not find function &quot;hm&quot;&quot;. This function comes from the package lubridate which is quite outdated and sometimes not well loaded. To fix it you actually just need to re-launch the application.
+- Sometimes the application is not launch when you compile it. It seems to be linked with the installation of packages which can take more time than the application to be launch resulting no launch at all. Re launching it fix again that problem.
+
 # Conclusion
 
-That study took us some time (mostly to create our list and statistics) but then using them let us see tendencies emerging from data. It shows us the interest of using computer softer to process data and our mind to create the model.
+We learned a way to use Shiny on R to visualize data. Even though our program can be improved, to display more, to reduce bugs and make it nicer, we implemented different features and understood the way shiny communicated through his UI and server.
+
+
