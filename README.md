@@ -1,14 +1,13 @@
 # Smokers_Data_Analysis_with_R
 
-## Data analysis – Smokers dataset
-
+# Data analysis – Smokers dataset
 
 The goal of this work is to find interesting data/patterns from a raw dataset (Dataset.csv). The excel file given are the response of 258 persons to 24 questions. Some question have simple answers, some contains a list of answers. The data are not normalized, so the first step of our study is to filter the data
 
 This study is focused on two dataset. The first part has for goal to find interesting data/patterns from a raw dataset (Dataset.csv). The excel file given are the response of 258 persons to 24 questions. Some question have simple answers, some contains a list of answers. 
 The second dataset is a series of observations made by a smocker : when he smoked and in which occasion. Using it we well build a shiny app to see interesting features interactively.
 
-##Dataset.csv Study
+#Dataset.csv Study
 The data are not normalized, so the first step of our study is to filter the data.
 
 **Data Cleaning:**
@@ -213,7 +212,7 @@ We also tried other method:
 
 We can say that using R to see correlation in those data was interesting because it helped us to identify link we could not have seen with our bare eyes. Nonetheless, that study also showed us how hard and long the process of data cleaning is (it represented dozens of hour of work), and how experience, to know &quot;where to find&quot; can be useful.
 
-##userdata.csv Study
+# userdata.csv Study
 
 The dataset given here is again linked with smoker. A brand of connected lighter collected data about the usage of their lighter. The lighter have 7 different modes:
 
@@ -231,7 +230,7 @@ The dataset hitself is composed of 3 columns:
 - The Mode of usage
 - The moment of usage
 
-# Data Processing:
+## Data Processing:
 
 - First of all we converted the given xls file to csv in order for R to be able to correctly open it. The new dataset is provided with this zip.
 - Then we began to work on the raw data:
@@ -350,7 +349,7 @@ So if we continue our example on the user 1 (same data), our function returns:
 
 When we compare it to the matrix:
 
-<img src="./Files/Images/compa.png" alt="test" height="200" width="500">
+<img src="./Files/Images/comp.png" alt="test" height="200" width="500">
 
 - So for this user tend to smoke less the Sunday night (logical since it is the day before coming back to work) and he smokes the most on Thursday afternoon.
 
@@ -399,7 +398,7 @@ After those mode come the mode 4 (On time)
 
 It is interesting to note that omitting the observation week, the next more used mode is the 5 (Skipped). It denotes a real motivation to reduce (or the incapacity to smoke at that moment)
 
-## Construction of the shiny application
+# Construction of the shiny application
 
 
 The goal here is to create a visualization tool through shiny to display the results.
@@ -412,7 +411,7 @@ Our choices
   - Doing this ensure that **after the initial wait, the navigation is then fluid** , since everything is provided for the different mechanism implemented
 - We decided to limit the choice for the upload and only display the head(because displaying all the set takes too much space and make the application crash)
 
-# Our Implementation
+## Our Implementation
 
 - We have 3 tabs:
 
@@ -431,7 +430,7 @@ Our choices
       - **Per Interval**
     - Precise Stat, using the **selectors** you can choose the **User, Week Day, Mode, Interval**
 
-# Visualisation
+## Visualisation
 
 - **Import file** (when a file has been imported)
 
@@ -462,6 +461,6 @@ Our choices
 
 # Conclusion
 
-We learned a way to use Shiny on R to visualize data. Even though our program can be improved, to display more, to reduce bugs and make it nicer, we implemented different features and understood the way shiny communicated through his UI and server.
+We saw a use case of Shiny on R to visualize data. Even though our program can be improved, to display more, to reduce bugs and make it nicer, we implemented different features and understood the way shiny communicated through his UI and server.
 
 
