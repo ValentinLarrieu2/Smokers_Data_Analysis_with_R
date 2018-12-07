@@ -3,7 +3,13 @@
 ## Data analysis – Smokers dataset
 
 
-The goal of this work is to find interesting data/patterns from a raw dataset. The excel file given are the response of 258 persons to 24 questions. Some question have simple answers, some contains a list of answers. The data are not normalized, so the first step of our study is to filter the data
+The goal of this work is to find interesting data/patterns from a raw dataset (Dataset.csv). The excel file given are the response of 258 persons to 24 questions. Some question have simple answers, some contains a list of answers. The data are not normalized, so the first step of our study is to filter the data
+
+This study is focused on two dataset. The first part has for goal to find interesting data/patterns from a raw dataset (Dataset.csv). The excel file given are the response of 258 persons to 24 questions. Some question have simple answers, some contains a list of answers. 
+The second dataset is a series of observations made by a smocker : when he smoked and in which occasion. Using it we well build a shiny app to see interesting features interactively.
+
+##Dataset.csv Study
+The data are not normalized, so the first step of our study is to filter the data.
 
 **Data Cleaning:**
 
@@ -104,11 +110,9 @@ Some statistics:
   - We can see that the people answering the questions are for a lot of them between 20 and 40
 <img src="./Files/Images/ageRepart.png" alt="test" height="300" width="300">
 
--
   - The repartition is :
 <img src="./Files/Images/repAge.png" alt="test" height="100" width="400">
 
--
   - Std
 
 <img src="./Files/Images/stdAge.png" alt="test" height="100" width="100">
@@ -120,7 +124,6 @@ Some statistics:
   - The repartition is :
 <img src="./Files/Images/repWeight.png" alt="test" height="100" width="400">
 
--
   - Std
 
 <img src="./Files/Images/stdWeight.png" alt="test" height="100" width="100">
@@ -129,11 +132,9 @@ Some statistics:
   - The set is for the most between 160 and 190cm
 <img src="./Files/Images/heightRepart.png" alt="test" height="300" width="300">
 
--
   - The repartition is :
 <img src="./Files/Images/repHeight.png" alt="test" height="100" width="400">
 
--
   - Std
 
 <img src="./Files/Images/stdHeight.png" alt="test" height="100" width="100">
@@ -142,11 +143,9 @@ Some statistics:
   - BMI for most between 25 and 35
 <img src="./Files/Images/bmiRepart.png" alt="test" height="300" width="300">
 
--
   - The repartition is :
 <img src="./Files/Images/repBmi.png" alt="test" height="100" width="400">
 
--
   - Std
 <img src="./Files/Images/stdBmi.png" alt="test" height="100" width="100">
 
@@ -215,5 +214,196 @@ We also tried other method:
 
 - The result of those 2 methods where not really successful
 
-As a conclusion, we can say that using R to see correlation in those data was interesting because it helped us to identify link we could not have seen with our bare eyes. Nonetheless, that study also showed us how hard and long the process of data cleaning is (it represented dozens of hour of work), and how experience, to know &quot;where to find&quot; can be useful.
+We can say that using R to see correlation in those data was interesting because it helped us to identify link we could not have seen with our bare eyes. Nonetheless, that study also showed us how hard and long the process of data cleaning is (it represented dozens of hour of work), and how experience, to know &quot;where to find&quot; can be useful.
 
+##userdata.csv Study
+
+The dataset given here is again linked with smoker. A brand of connected lighter collected data about the usage of their lighter. The lighter have 7 different modes:
+
+- Observation week
+- Cheated
+- Friend
+- Ontime
+- Skipped
+- Snoozed
+- Auto skipped
+
+The dataset hitself is composed of 3 columns:
+
+- The user ID
+- The Mode of usage
+- The moment of usage
+
+# Data Processing:
+
+- First of all we converted the given xls file to csv in order for R to be able to correctly open it. The new dataset is provided with this zip.
+- Then we began to work on the raw data:
+  - We created a dataframe impoting the csv file in R
+  - We separated the hour:minutes from the column time to a new column &quot;TimeHourMin&quot;
+  - We set the type of the column &quot;Time&quot; do date
+  - We extracted the Day of Week to a column &quot;DayOfWeek&quot; (1 is Sunday, 2 is Monday…)
+  - We extracted the day number to a column &quot;DayNumber&quot;
+  - We extracted the week number to a column &quot;WeekNumber&quot;
+  - We created a column &quot;TimeInterval&quot; corresponding to:
+    - 1 is 6 to 11h59
+    - 2 is 12 to 17h59
+    - 3 is 18h to 23h59
+    - 4 is 00h to 5h59
+- We created functions to fulfill our needs:
+  - 2 functions were created to reset vectors (put 0 in all the element of the list or a Boolean false
+  - A big function was created to extract all the data we needed. It loop over the full dataset and return all the list of element we need. It takes some minutes to generate them. Returned object:
+    - The user List (from 1 to 32 here)
+    - The total of cigarette smoked by user (32 elements with a number in each)
+    - The total of cigarette smoked for each mode (32 lines and 7 column, one for each mode, the mode being ordered with the same order as it given previously in that document)
+    - A list containing 3 list:
+      - The list of days (from 1 to seven but ordered differently)
+      - The list contains the number of day the user smoked (32 lines, 7 column, each element representing for example : user 1 smoked on 7 Mondays)
+      - The list containing the total of cigarette smoked for each day (32 lines and 7 column too)
+        - Those lists will be used to calculate the mean per day per user
+    - A list containing 2 list:
+      - The list of intervals (from 1 to 4 but ordered differently)
+      - The total of cigarette smoked for each interval (32 lines and 4 column)
+    - A list containing 2 lists:
+      - The list of weeks (from 23 to 44 here)
+      - The total cigarette smoked per week (32 lines, 21 columns)
+    - A list containing the number of cigarette smoked by each user for the 7 last days (32 lines, 1 column containing a number)
+    - A list containing the number of cigarette by interval of time and week day (32 elements of 4 intervals rows and 7 day column)
+  - All those features extracted are then used to answer to the different question given
+
+<img src="./Files/Images/graphTotalCig.png" alt="test" height="300" width="300">
+<img src="./Files/Images/user1.png" alt="test" height="300" width="100">
+<img src="./Files/Images/user2.png" alt="test" height="300" width="100">
+
+
+
+But as we decide to only talk of cigarette &quot;smoked&quot; **we exclude the categories friends, auto skipped** , **skipped and snoozed** which gives us:
+
+<img src="./Files/Images/graphTotalCig2.png" alt="test" height="300" width="300">
+<img src="./Files/Images/user12.png" alt="test" height="300" width="100">
+<img src="./Files/Images/user22.png" alt="test" height="300" width="100">
+
+
+**Total per Mode:**
+
+<img src="./Files/Images/perMode.png" alt="test" height="700" width="500">
+<img src="./Files/Images/scatterPerMode.png" alt="test" height="700" width="800">
+
+
+**Mean of cigarette smoked each day:**
+
+
+(1 is Sunday)
+
+<img src="./Files/Images/scatterPerDay.png" alt="test" height="700" width="700">
+<img src="./Files/Images/perDayData.png" alt="test" height="700" width="700">
+
+
+**Standard Deviation per day:**
+
+<img src="./Files/Images/stdDay.png" alt="test" height="500" width="700">
+
+
+**Number of consumed cigarette for the last 7 days:**
+
+<img src="./Files/Images/consumedDay.png" alt="test" height="500" width="700">
+<img src="./Files/Images/cigDays1.png" alt="test" height="300" width="400">
+<img src="./Files/Images/cigDays2.png" alt="test" height="300" width="400">
+
+
+
+**Statistics on mode :**
+
+- We chose to represent the percentage of each mode by user
+<img src="./Files/Images/pourcMode.png" alt="test" height="800" width="500">
+
+
+- Here we can see that the user 27 only used his lighter in observationnal week or for his friend so maybe he is not a smocker, or maybe he stoped right after the first week
+<img src="./Files/Images/scatterFeat.png" alt="test" height="500" width="800">
+
+
+
+**Improvement between week 1 and2:**
+
+<img src="./Files/Images/improve1.png" alt="test" height="800" width="500">
+<img src="./Files/Images/improve2.png" alt="test" height="800" width="500">
+
+**Smoking patern:**
+
+- We created the function &quot;giveMeFullMeanLabelledIntervalDayDF&quot; which takes the return list from the principal function as a parameter (and the element of that list as a number, the user id and the number of column of the matrix) and returns a dataframe showing the mean of cigarette smoked for that user by day by interval of time
+
+<img src="./Files/Images/smokePatern.png" alt="test" height="200" width="500">
+
+So if we take the User 1 for example :
+
+(1 is Sunday)
+
+We can see that it seem logical that the mean cigarette smoke il low for period 4 since it is between 0 and 6 so the night. We can also see that this people tend to smoke more on the day rather than the evening.
+
+Here is a plot of the surface defined by this matrix:
+
+<img src="./Files/Images/smokePaternGraph.png" alt="test" height="500" width="500">
+
+Period of the week were the people smoke the most:
+
+- We create a function called &quot;fctOnDataframe&quot; which takes a dataframe as argument and a function (here min or max) and returns the coordinates of the result (as row, column)
+
+<img src="./Files/Images/smokePaternStat.png" alt="test" height="150" width="100">
+
+So if we continue our example on the user 1 (same data), our function returns:
+
+When we compare it to the matrix:
+
+<img src="./Files/Images/compa.png" alt="test" height="200" width="500">
+
+- So for this user tend to smoke less the Sunday night (logical since it is the day before coming back to work) and he smokes the most on Thursday afternoon.
+
+Other profile for example with user 2:
+
+<img src="./Files/Images/compa2.png" alt="test" height="200" width="500">
+<img src="./Files/Images/compa2Stat.png" alt="test" height="150" width="100">
+<img src="./Files/Images/smokePatern2.png" alt="test" height="500" width="500">
+
+- His profile is quite different, he smokes more, but smoke the less the Saturday evening. He also tend to smoke more on the morning and moreover the Wednesday
+
+**General All User Stats** :
+
+- We create a dataframe which is the sum of the average cigarette smoke per day per period
+- We use the previous studies done to classify the dataset
+
+<img src="./Files/Images/allStat.png" alt="test" height="200" width="500">
+
+- We also generate a sum to see it more clearly
+
+<img src="./Files/Images/allStat2.png" alt="test" height="200" width="500">
+
+-
+  - It seem that smokers tend to smoke more during the day than during the evening
+  - The period they smoke the less is the night, and more particularly the Sunday night. We can correlate it with the first day of the work week being the Monday so the day after. This data must have been taken in a western country were the Sunday is a free day
+
+<img src="./Files/Images/allStatGraph.png" alt="test" height="500" width="500">
+
+Transposing the matrix gives us:
+
+<img src="./Files/Images/allStatMatrix.png" alt="test" height="300" width="500">
+
+- Smokers seems to smoke more at the beginning of the working week (Monday and Tuesday)
+
+- We then study the modes and construct a data frame which represent the 32 users and the sum for each mode:
+<img src="./Files/Images/modeUsersGraph.png" alt="test" height="300" width="1000">
+
+<img src="./Files/Images/modeUsersGraph.png" alt="test" height="400" width="400">
+
+As we can see the mode 7 (auto skipped) and 2(Cheat) are the most used by far. It shows us 2 tendencies:
+
+- First the auto skipped appears a lot because the smoker don&#39;t always take his lighter with him
+- Even if they use smart lighter, smokers are still tempted to cheat since they are addicted
+
+After those mode come the mode 4 (On time)
+
+- It seem logical that smokers use the possibility to smoke when they can
+
+It is interesting to note that omitting the observation week, the next more used mode is the 5 (Skipped). It denotes a real motivation to reduce (or the incapacity to smoke at that moment)
+
+# Conclusion
+
+That study took us some time (mostly to create our list and statistics) but then using them let us see tendencies emerging from data. It shows us the interest of using computer softer to process data and our mind to create the model.
