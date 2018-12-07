@@ -115,7 +115,7 @@ Some statistics:
 
   - Std
 
-<img src="./Files/Images/stdAge.png" alt="test" height="100" width="100">
+<img src="./Files/Images/stdAge.png" alt="test" height="80" width="50">
 
 - Weight
   - A big part of the set is between 60 and 90 kg
@@ -133,21 +133,21 @@ Some statistics:
 <img src="./Files/Images/heightRepart.png" alt="test" height="300" width="300">
 
   - The repartition is :
-<img src="./Files/Images/repHeight.png" alt="test" height="100" width="400">
+<img src="./Files/Images/repHeight.png" alt="test" height="80" width="300">
 
   - Std
 
-<img src="./Files/Images/stdHeight.png" alt="test" height="100" width="100">
+<img src="./Files/Images/stdHeight.png" alt="test" height="80" width="50">
 
 - BMI
   - BMI for most between 25 and 35
 <img src="./Files/Images/bmiRepart.png" alt="test" height="300" width="300">
 
   - The repartition is :
-<img src="./Files/Images/repBmi.png" alt="test" height="100" width="400">
+<img src="./Files/Images/repBmi.png" alt="test" height="80" width="300">
 
   - Std
-<img src="./Files/Images/stdBmi.png" alt="test" height="100" width="100">
+<img src="./Files/Images/stdBmi.png" alt="test" height="80" width="50">
 
 Some link between data:
 
@@ -190,7 +190,7 @@ The rules generated look like this:
 
 <img src="./Files/Images/aprioriScatterRules.png" alt="test" height="300" width="300">
 
-<img src="./Files/Images/aprioriRules.png" alt="test" height="500" width="500">
+<img src="./Files/Images/aprioriRules.png" alt="test" height="400" width="500">
 
 
 - Some logical result can be seen here: the people wanting the reduce or stop smoking ( QuitOrReduce=2 or 3) managed to stop smoking for a short period (SucessfulStop=2). It seems to show that motivation is important
@@ -201,12 +201,9 @@ We also tried other method:
 
 - Clustering with medoids (here for BMI)
 
-<img src="./Files/Images/kmdoids.png" alt="test" height="500" width="500">
+<img src="./Files/Images/kmdeoids.png" alt="test" height="500" width="500">
 
 - Clustering with KMean :
-
-<img src="./Files/Images/kmdoids.png" alt="test" height="500" width="500">
-
 
 (10 clusters)
 
@@ -295,7 +292,7 @@ But as we decide to only talk of cigarette &quot;smoked&quot; **we exclude the c
 (1 is Sunday)
 
 <img src="./Files/Images/scatterPerDay.png" alt="test" height="700" width="700">
-<img src="./Files/Images/perDayData.png" alt="test" height="700" width="700">
+<img src="./Files/Images/perDayData.png" alt="test" height="700" width="550">
 
 
 **Standard Deviation per day:**
@@ -305,9 +302,9 @@ But as we decide to only talk of cigarette &quot;smoked&quot; **we exclude the c
 
 **Number of consumed cigarette for the last 7 days:**
 
-<img src="./Files/Images/consumedDay.png" alt="test" height="500" width="700">
-<img src="./Files/Images/cigDays1.png" alt="test" height="300" width="400">
-<img src="./Files/Images/cigDays2.png" alt="test" height="300" width="400">
+<img src="./Files/Images/consumedDay.png" alt="test" height="400" width="500">
+<img src="./Files/Images/cigDays1.png" alt="test" height="300" width="300">
+<img src="./Files/Images/cigDays2.png" alt="test" height="300" width="300">
 
 
 
@@ -389,8 +386,6 @@ Transposing the matrix gives us:
 - Smokers seems to smoke more at the beginning of the working week (Monday and Tuesday)
 
 - We then study the modes and construct a data frame which represent the 32 users and the sum for each mode:
-<img src="./Files/Images/modeUsersGraph.png" alt="test" height="300" width="1000">
-
 <img src="./Files/Images/modeUsersGraph.png" alt="test" height="400" width="400">
 
 As we can see the mode 7 (auto skipped) and 2(Cheat) are the most used by far. It shows us 2 tendencies:
