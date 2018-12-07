@@ -61,8 +61,7 @@ Education &amp; Family cleaning: both were converted to numerical
   - 3= Moderate
   - 4= Heavy smokers
   - 5= Other
--
-Brand of cigarettes: just converted to numerical: 
+- Brand of cigarettes: just converted to numerical: 
 <img src="./Files/Images/brandAndCig.png" alt="test" height="100" width="500"> 
 - Type of cigarette Box:
   - 1: Roll up
@@ -107,24 +106,24 @@ Some statistics:
 
 -
   - The repartition is :
-<img src="./Files/Images/repAge.png" alt="test" height="100" width="500">
+<img src="./Files/Images/repAge.png" alt="test" height="100" width="400">
 
 -
   - Std
 
-<img src="./Files/Images/stdAge.png" alt="test" height="100" width="200">
+<img src="./Files/Images/stdAge.png" alt="test" height="100" width="100">
 
 - Weight
   - A big part of the set is between 60 and 90 kg
 <img src="./Files/Images/weightRepart.png" alt="test" height="300" width="300">
 
   - The repartition is :
-<img src="./Files/Images/repWeight.png" alt="test" height="100" width="500">
+<img src="./Files/Images/repWeight.png" alt="test" height="100" width="400">
 
 -
   - Std
 
-<img src="./Files/Images/stdWeight.png" alt="test" height="100" width="200">
+<img src="./Files/Images/stdWeight.png" alt="test" height="100" width="100">
 
 - Height
   - The set is for the most between 160 and 190cm
@@ -132,12 +131,12 @@ Some statistics:
 
 -
   - The repartition is :
-<img src="./Files/Images/repHeight.png" alt="test" height="100" width="500">
+<img src="./Files/Images/repHeight.png" alt="test" height="100" width="400">
 
 -
   - Std
 
-<img src="./Files/Images/stdHeight.png" alt="test" height="100" width="200">
+<img src="./Files/Images/stdHeight.png" alt="test" height="100" width="100">
 
 - BMI
   - BMI for most between 25 and 35
@@ -145,11 +144,11 @@ Some statistics:
 
 -
   - The repartition is :
-<img src="./Files/Images/repBmi.png" alt="test" height="100" width="500">
+<img src="./Files/Images/repBmi.png" alt="test" height="100" width="400">
 
 -
   - Std
-<img src="./Files/Images/stdBmi.png" alt="test" height="100" width="200">
+<img src="./Files/Images/stdBmi.png" alt="test" height="100" width="100">
 
 Some link between data:
 
@@ -196,8 +195,6 @@ The rules generated look like this:
 
 
 - Some logical result can be seen here: the people wanting the reduce or stop smoking ( QuitOrReduce=2 or 3) managed to stop smoking for a short period (SucessfulStop=2). It seems to show that motivation is important
-
-
 
 
 
